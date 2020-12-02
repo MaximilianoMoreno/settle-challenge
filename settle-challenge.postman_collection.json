@@ -1,0 +1,149 @@
+{
+	"info": {
+		"_postman_id": "528101c6-48e8-4688-b230-e0c9a508d95e",
+		"name": "settle-challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "storeRateExchange",
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\": 100,\n\t\"pair\": {\n        \"from\": \"EUR\",\n        \"to\":\"USD\"\n    },\n    \"fee\": 20\n}"
+				},
+				"url": {
+					"raw": "localhost:8000/storeRateExchange",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"storeRateExchange"
+					],
+					"query": [
+						{
+							"key": "Authorization",
+							"value": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJndWlkIjoiOWYzMDNlZWItODQ5OC00MmQ4LWJiMTMtMjY0NWY0NWJjZjU2IiwiY29va2llIjoic2Vzc2lvbj03MzU0NzUzYy0zZDljLTQ2NjctYTJiYi0yMzdlMWM2MGYzZTI7IHBhdGg9LzsgZXhwaXJlcz1TYXQsIDE0IE5vdiAyMDIwIDE3OjQyOjQxIEdNVDsgZG9tYWluPWs0Y29ubmVjdC5jb207IGh0dHBvbmx5IiwidXNlcm5hbWUiOiI5ZjMwM2VlYi04NDk4LTQyZDgtYmIxMy0yNjQ1ZjQ1YmNmNTYiLCJyb2xlcyI6WzJdLCJwZXJtaXNzaW9ucyI6WyJBc3NvY2lhdGlvblJlYWQiLCJDYWxscyIsIkNvbnRlbnRSZWFkIiwiRG9jdW1lbnRSZWFkIiwiRXVsYUFjY2VwdCIsIlBvc1JlYWQiLCJVc2VyRXZlbnRzUmVhZCIsIlVzZXJFdmVudHNXcml0ZSIsIlVzZXJSZWFkIiwiV29ya09yZGVyQ3JlYXRlIiwiV29ya09yZGVyUmVhZCJdLCJjb21tdW5pdGllcyI6WzI0NzZdLCJmZWF0dXJlcyI6eyIyNDc2Ijp7IndvcmtPcmRlcnMiOnRydWUsImRvbW8iOnRydWV9fSwiaWF0IjoxNjA1Mjg5MzYxLCJleHAiOjE2Mzk4NDkzNjEsImF1ZCI6InN0YWdpbmciLCJpc3MiOiJrNGFwaS5pbyIsInN1YiI6IjlmMzAzZWViLTg0OTgtNDJkOC1iYjEzLTI2NDVmNDViY2Y1NiJ9.TZ82gJMvxE0AsQ77Q9EP8Q5MP9IQWyZioiztiBc7ZsSx1MZhDVaQaRAYDmS2FfMZ_dLz74HBYUoZX07I5AABDw",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Save a Rate Exchange applying a fee (in percentage) to an amount and a pair of currencies"
+			},
+			"response": []
+		},
+		{
+			"name": "getRates",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/rates",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"rates"
+					]
+				},
+				"description": "Get all currency convertion rates"
+			},
+			"response": []
+		},
+		{
+			"name": "convert",
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"from\": \"EUR\",\n    \"to\":\"USD\",\n    \"amount\": 1\n}"
+				},
+				"url": {
+					"raw": "localhost:8000/convert",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"convert"
+					],
+					"query": [
+						{
+							"key": "Authorization",
+							"value": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJndWlkIjoiOWYzMDNlZWItODQ5OC00MmQ4LWJiMTMtMjY0NWY0NWJjZjU2IiwiY29va2llIjoic2Vzc2lvbj03MzU0NzUzYy0zZDljLTQ2NjctYTJiYi0yMzdlMWM2MGYzZTI7IHBhdGg9LzsgZXhwaXJlcz1TYXQsIDE0IE5vdiAyMDIwIDE3OjQyOjQxIEdNVDsgZG9tYWluPWs0Y29ubmVjdC5jb207IGh0dHBvbmx5IiwidXNlcm5hbWUiOiI5ZjMwM2VlYi04NDk4LTQyZDgtYmIxMy0yNjQ1ZjQ1YmNmNTYiLCJyb2xlcyI6WzJdLCJwZXJtaXNzaW9ucyI6WyJBc3NvY2lhdGlvblJlYWQiLCJDYWxscyIsIkNvbnRlbnRSZWFkIiwiRG9jdW1lbnRSZWFkIiwiRXVsYUFjY2VwdCIsIlBvc1JlYWQiLCJVc2VyRXZlbnRzUmVhZCIsIlVzZXJFdmVudHNXcml0ZSIsIlVzZXJSZWFkIiwiV29ya09yZGVyQ3JlYXRlIiwiV29ya09yZGVyUmVhZCJdLCJjb21tdW5pdGllcyI6WzI0NzZdLCJmZWF0dXJlcyI6eyIyNDc2Ijp7IndvcmtPcmRlcnMiOnRydWUsImRvbW8iOnRydWV9fSwiaWF0IjoxNjA1Mjg5MzYxLCJleHAiOjE2Mzk4NDkzNjEsImF1ZCI6InN0YWdpbmciLCJpc3MiOiJrNGFwaS5pbyIsInN1YiI6IjlmMzAzZWViLTg0OTgtNDJkOC1iYjEzLTI2NDVmNDViY2Y1NiJ9.TZ82gJMvxE0AsQ77Q9EP8Q5MP9IQWyZioiztiBc7ZsSx1MZhDVaQaRAYDmS2FfMZ_dLz74HBYUoZX07I5AABDw",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Convert an amount to a pair {origin, to} "
+			},
+			"response": []
+		},
+		{
+			"name": "getRateExchanges",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\": 100,\n\t\"pair\": {\n        \"from\": \"EUR\",\n        \"to\":\"USD\"\n    },\n    \"fee\": 20\n}"
+				},
+				"url": {
+					"raw": "localhost:8000/getRateExchange",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"getRateExchange"
+					],
+					"query": [
+						{
+							"key": "Authorization",
+							"value": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJndWlkIjoiOWYzMDNlZWItODQ5OC00MmQ4LWJiMTMtMjY0NWY0NWJjZjU2IiwiY29va2llIjoic2Vzc2lvbj03MzU0NzUzYy0zZDljLTQ2NjctYTJiYi0yMzdlMWM2MGYzZTI7IHBhdGg9LzsgZXhwaXJlcz1TYXQsIDE0IE5vdiAyMDIwIDE3OjQyOjQxIEdNVDsgZG9tYWluPWs0Y29ubmVjdC5jb207IGh0dHBvbmx5IiwidXNlcm5hbWUiOiI5ZjMwM2VlYi04NDk4LTQyZDgtYmIxMy0yNjQ1ZjQ1YmNmNTYiLCJyb2xlcyI6WzJdLCJwZXJtaXNzaW9ucyI6WyJBc3NvY2lhdGlvblJlYWQiLCJDYWxscyIsIkNvbnRlbnRSZWFkIiwiRG9jdW1lbnRSZWFkIiwiRXVsYUFjY2VwdCIsIlBvc1JlYWQiLCJVc2VyRXZlbnRzUmVhZCIsIlVzZXJFdmVudHNXcml0ZSIsIlVzZXJSZWFkIiwiV29ya09yZGVyQ3JlYXRlIiwiV29ya09yZGVyUmVhZCJdLCJjb21tdW5pdGllcyI6WzI0NzZdLCJmZWF0dXJlcyI6eyIyNDc2Ijp7IndvcmtPcmRlcnMiOnRydWUsImRvbW8iOnRydWV9fSwiaWF0IjoxNjA1Mjg5MzYxLCJleHAiOjE2Mzk4NDkzNjEsImF1ZCI6InN0YWdpbmciLCJpc3MiOiJrNGFwaS5pbyIsInN1YiI6IjlmMzAzZWViLTg0OTgtNDJkOC1iYjEzLTI2NDVmNDViY2Y1NiJ9.TZ82gJMvxE0AsQ77Q9EP8Q5MP9IQWyZioiztiBc7ZsSx1MZhDVaQaRAYDmS2FfMZ_dLz74HBYUoZX07I5AABDw",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Get all stored Rate Exchanges"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
